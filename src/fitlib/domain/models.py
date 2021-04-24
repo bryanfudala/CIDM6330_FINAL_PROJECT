@@ -47,3 +47,24 @@ class ExcerciseLog:
         self.adddate : str = adddate
         self.editdate : str = editdate
         self.events = []
+
+class Meals:
+    def __init__(self, id: int, name: str, protein: int, carbs: int, fats: int, calories: int, adddate: datetime, editdate: datetime):
+        self.id : int = id
+        self.name : str = name
+        self.protein : int = protein
+        self.carbs : int = carbs
+        self.fats : int = fats
+        self.calories : int = calories
+        self.adddate : str = adddate
+        self.editdate : str = editdate
+        self.events = []
+
+class Exercise:
+    def __init__(self, id: int, name: str, xfactor: int, adddate: datetime, editdate: datetime):
+        self.id : int = id
+        self.name : str = name
+        self.xfactor : int = xfactor
+        self.adddate : str = adddate
+        self.editdate : str = editdate
+        self.events = []

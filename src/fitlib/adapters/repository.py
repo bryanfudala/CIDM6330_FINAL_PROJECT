@@ -4,20 +4,20 @@ from datetime import datetime
 # making use of type hints: https://docs.python.org/3/library/typing.html
 from typing import List, Set
 
-from barkylib.adapters import orm
-from barkylib.domain.models import Bookmark
+from fitlib.adapters import orm
+from fitlib.domain.models import DailyLog
 
 
-class AbstractBookmarkRepository(ABC):
+class AbstractDailyLogRepository(ABC):
     def __init__(self):
         # seen is in reference to events detected
-        self.seen = set()
+        self.seen : set[DailyLog] = set()
 
-    def add(self, bookmark: Bookmark) -> None:
+    def add(self, dailylogs: DailyLog) -> None:
         # add to repo
-        self._add(bookmark)
+        self._add(DailyLog)
         # add to event list
-        self.seen.add(bookmark)
+        self.seen.add(DailyLog)
 
     def get_all(self) -> list[Bookmark]:
         bookmarks: list[Bookmark] = self._get_all()

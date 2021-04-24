@@ -14,13 +14,14 @@ from sqlalchemy.log import InstanceLogger
 
 from sqlalchemy.orm import registry, mapper, relationship
 
-from fitlib.domain.models import Bio, DailyLog, ExcerciseLog
+from fitlib.domain.models import Bio, DailyLog, ExcerciseLog, Meals, Exercise
+
+logger = logging.getLogger(__name__)
+
+metadata = MetaData()
 
 mapper_registry = registry()
 Base = mapper_registry.generate_base()
-
-logger = logging.getLogger(__name__)
-metadata = mapper_registry.metadata
 
 
 """
@@ -92,4 +93,20 @@ exercise = Table(
 
 def start_mappers():
     logger.info("starting mappers")
-    fit_mapper = mapper(bio, bio)
+    bio_mapper = mapper(Bio, bio)
+
+def start_mappers():
+    logger.info("starting mappers")
+    dailylog_mapper = mapper(DailyLog, dailylog)
+
+def start_mappers():
+    logger.info("starting mappers")
+    exerciselog_mapper = mapper(ExcerciseLog, exerciselog)
+
+def start_mappers():
+    logger.info("starting mappers")
+    meals_mapper = mapper(Meals, meals)
+
+def start_mappers():
+    logger.info("starting mappers")
+    exercise_mapper = mapper(Exercise, exercise)
