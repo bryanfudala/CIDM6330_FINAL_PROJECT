@@ -36,7 +36,7 @@ class DailyLog:
         self.editdate : str = editdate
         self.events = []
 
-class ExcerciseLog:
+class ExerciseLog:
 
     def __init__(self, id: int, name: str, xfactor: int, duration: int, caloriesburned: int, adddate: datetime, editdate: datetime):
         self.id : int = id

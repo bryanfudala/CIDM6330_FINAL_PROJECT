@@ -3,7 +3,7 @@ from datetime import datetime
 from dataclasses import dataclass
 from typing import Optional
 
-from .models import DailyLog, ExcerciseLog
+from .models import DailyLog, ExerciseLog
 
 
 
@@ -12,28 +12,61 @@ class Event(ABC):
 
 
 @dataclass
-class BookmarkAdded(Event):
+class DailyLogAdded(Event):
     id: int
-    title: str
-    url: str
-    date_added: str
-    bookmark_notes: Optional[str] = None
-
+    IDMeal: int
+    MealName: str
+    calories: int
+    protein: int
+    adddate : str
+    editdate: str
 
 @dataclass
-class BookmarkEdited(Event):
+class DailyLogUpdated(Event):
     id: int
-    title: str
-    url: str
-    date_edited: str
-    bookmark_notes: Optional[str] = None
+    IDMeal: int
+    MealName: str
+    calories: int
+    protein: int
+    adddate : str
+    editdate: str
+
+@dataclass
+class DailyLogListed(Event):
+    DailyLog: list[DailyLog]
+
+@dataclass
+class DailyLogDeleted(Event):
+    DailyLog: DailyLog
+    
+
 
 
 @dataclass
-class BookmarksListed(Event):
-    bookmarks: list[Bookmark]
-
+class ExerciseLogAdded(Event):
+    id: int
+    Name: str
+    xfactor: int
+    duration: int
+    caloriesburned: int
+    adddate : str
+    editdate: str
 
 @dataclass
-class BookmarkDeleted(Event):
-    bookmark: Bookmark
+class ExerciseLogUpdated(Event):
+    id: int
+    Name: str
+    xfactor: int
+    duration: int
+    caloriesburned: int
+    adddate : str
+    editdate: str
+
+@dataclass
+class ExerciseLogListed(Event):
+    ExerciseLog: list[ExerciseLog]
+
+@dataclass
+class ExerciseLogDeleted(Event):
+    ExerciseLog: ExerciseLog
+

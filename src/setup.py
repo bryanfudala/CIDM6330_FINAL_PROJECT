@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="allocation",
+    name="fitlib",
     version="0.2.0",
-    packages=["allocation"],
+    packages=["fitlib"],
 )
