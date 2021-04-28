@@ -41,3 +41,37 @@ def test_add_dailylog_item():
     assert bus.uow.DailyLogs.get_by_IDMeal(f"FakeID") is not None
     assert bus.uow.committed
 
+
+
+def test_get_all_dailylog_records():
+    bus = boostrap_test_app()
+
+    nu: datetime = datetime(2021, 3, 31, 0, 0, 0, 0, tzinfo=timezone.utc)
+    bus.handle(
+        commands.AddDailyLogCommand(
+            5,
+            f"psuedomealid",  # id meal
+            f"chicken",  # meal name
+            80, #calories
+            10, #protein
+            nu.isoformat(),  # date added
+            nu.isoformat(),  # date edited
+        )
+    )
+
+    nuto = nu + timedelta(days=2, hours=12)
+
+    bus.handle(
+        commands.AddDailyLogCommand(
+            6,
+            f"psuedofoodmeal",  # id meal
+            f"steak",  # meal name
+            100, #calories
+            25, #protein
+            nu.isoformat(),  # date added
+            nu.isoformat(),  # date edited
+        )
+    )
+
+    records = bus.uow.DailyLogs.get_all()
+    assert len(records) == 2
